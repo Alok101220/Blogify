@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+/* body{
+	background-color:lightgrey;
+	background-image:url("welcome.webp");
+	background-size:cover;
+	background-repeat:no-repeat;
+} */
+body{
+	background-color:lightgrey;
+	font-family:sans-serif;
+}
+#header{
+	display:flex;
+	justify-content: center;
+}
+
+#header img{
+	height: 68px;
+    position: relative;
+    top: 10px;
+	width:78px;
+	padding-right: 10px;
+}
+#header p{
+	font-size: 30px;
+	font-weight: bold;
+	margin-top:20px;
+}
+#backgroundimg img{
+	width: 100%;
+	    position: absolute;
+    top: 50px;
+    height: 90%;
+    opacity:0.8;
+}
+.punchLine{
+	position: absolute;
+    top: 320px;
+    left: 560px;
+    font-size: 30px;
+    font-weight: 600;
+    font-family: 'Cedarville Cursive', cursive;
+}
+
+.login{
+	position: absolute;
+    bottom: 20px;
+    left: 620px;
+    font-size: 20px;
+    
+}
+.login a{
+	text-decoration:none;
+}
+/* .login a {
+  color: blue;
+}
+.login a:visited{
+	color: green;
+} */

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Blogify</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link rel="icon" type="image/x-icon" href="logo.png">
+<link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+	<div class="container mt-3 mb-3">
+		<!-- Header Menu of the Page -->
+		<!-- Header Menu of the Page -->
+		<header>
+
+			<!-- Top header menu containing
+		logo and Navigation bar -->
+			<div id="top-header">
+
+				<!-- Logo -->
+				<div id="logo">
+					<img src="logo.png" />
+				</div>
+
+				<!-- Navigation Menu -->
+				<nav>
+					<ul id="flex">
+						<li class="active"><a
+							th:href="@{/homepage(userId=${userId})}">HOME</a></li>
+						<li><a href="#" onclick="openPopup()">ABOUT US</a></li>
+						<li><a th:href="@{/profile(userId=${userId})}">PROFILE</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+
+		<div class="popup-form" id="popup-form">
+			<img alt="" src="logo.png">
+			<div class="body-text">
+				<h2>Alok Singh</h2>
+				<p>I am Software Developer</p>
+				<div class="my-info">
+					<label>Rewa M.P. India (486001) || +91-6264280749</label>
+				</div>
+			</div>
+			<hr>
+			<div class="about-us-popup">
+				<label>Contact for more</label>
+
+				<form action="mailto:alok91340@gmail.com" method="post"
+					enctype="text/plain">
+					<br>
+					<div class="form-floating">
+						<input class="form-control" placeholder="Enter your email"
+							id="floatingTextarea" type="email">
+
+					</div>
+					<br>
+					<div class="form-floating">
+						<textarea class="form-control" placeholder="Enter your message.."
+							id="floatingTextarea" name="message"></textarea>
+						<br>
+					</div>
+					<button class="send" type="submit">SEND</button>
+
+				</form>
+				<img alt="" src="x-button.png" onclick="closePopup()">
+			</div>
+
+		</div>
+
+
+
+		<div>
+
+
+
+			<br /> <br /> <a th:href="@{/addNewBlog(userId=${userId})}"
+				class="btn btn-primary">Add New Blog</a>
+			<hr />
+			<h2>Explore our newest posts</h2>
+			<!-- <label th:if="${size != 0}">Nothing to Show</label> -->
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Content</th>
+						<th>Category</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="post: ${posts}">
+					<td th:text="${post.title}" />
+						<td >
+							<p th:text="${post.content}"></p>
+							<hr>
+							<p th:text="${post.dateCreated}"></p>
+						</td>
+						
+						<td th:text="${post.category.categoryTitle}" />
+						<td><a
+							th:href="@{/readBlog(postId=${post.postId},userId=${userId})}"
+							class="btn btn-info">Read</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<!-- <div class="card" style="width: 18rem;">
+				<img src="welcome.webp" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">Card title</h5>
+					<p class="card-text">Some quick example text to build on the
+						card title and make up the bulk of the card's content.</p>
+					<a href="#" class="btn btn-primary">Go somewhere</a>
+				</div>
+
+			</div>
+			<div class="card" style="width: 18rem;">
+				<img src="welcome.webp" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">Card title</h5>
+					<p class="card-text">Some quick example text to build on the
+						card title and make up the bulk of the card's content.</p>
+					<a href="#" class="btn btn-primary">Go somewhere</a>
+				</div>
+			</div> -->
+
+		<hr>
+		<!-- Site footer -->
+		<div class="site-footer-1">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6 col-md-6">
+						<h6>Contact Us</h6>
+
+						<form action="mailto:alok91340@gmail.com" method="post"
+							enctype="text/plain">
+							<br>
+							<div class="form-floating">
+								<input class="form-control" placeholder="Enter your email"
+									id="floatingTextarea" type="email">
+
+							</div>
+							<br>
+							<div class="form-floating">
+								<textarea class="form-control"
+									placeholder="Enter your message.." id="floatingTextarea"
+									name="message"></textarea>
+								<br>
+							</div>
+							<button class="send" type="submit">SEND</button>
+
+						</form>
+
+					</div>
+
+					<div class="col-xs-6 col-md-6">
+						<h6>Quick Links</h6>
+						<ul class="footer-links">
+							<li class="active"><a
+								th:href="@{/homepage(userId=${userId})}">Home</a></li>
+							<li><a href="#">About Us</a></li>
+							<li><a th:href="@{/profile(userId=${userId})}">Profile</a></li>
+							<!-- <li><a href="#">PrivacyPolicy</a></li> -->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="small">
+			<br>
+		</div>
+		<footer class="site-footer">
+			<div class="footer-container">
+				<div class="col-md-8 col-sm-6 col-xs-16">
+					<p class="copyright-text">
+						Copyright &copy; 2023 All Rights Reserved by <a href="#">Blogify</a>.
+					</p>
+				</div>
+
+				<div class="col-md-4 col-sm-6 col-xs-16">
+					<ul class="social-icons">
+						<li><a class="facebook" href="#"><img alt=""
+								src="facebook.png"></a></li>
+						<li><a class="twitter" href="#"><img alt=""
+								src="twitter.png"></a></li>
+						<li><a class="instagram" href="#"><img alt=""
+								src="instagram.png"></a></li>
+						<li><a class="linkedin" href="#"><img alt=""
+								src="linkedin.png"></a></li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+
+
+	</div>
+
+	<script>
+		let popup = document.getElementById("popup-form");
+
+		function openPopup() {
+			popup.classList.add("open-popup");
+
+		}
+		function closePopup() {
+			popup.classList.remove("open-popup");
+		}
+	</script>
+
+</body>
+</html>
